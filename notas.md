@@ -73,3 +73,14 @@ Como hacemos para gestionar que hacer con los metodos? con el Router de Express
 **Recibir info desde cliente: Body y Query**
 Para trabajar con el Body debemos instalar Body Parser
 es una extension que nos permite trabajar con el body de manera sencilla
+
+**Que implica construir un backend**
+Debemos ser cuidadosos con la informacion que le entregamos al cliente
+ej. un login
+mandamos usuario y contraseña
+Tenemos los logs
+
+## Arquitectura
+
+**Rutas**
+separando el archivo
