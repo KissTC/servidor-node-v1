@@ -4,6 +4,8 @@ const express = require('express');
 //el router nos va a poder permitir separar nuestras peticiones
 const router = express.Router();
 const response = require('../../network/response');
+//controlador de message
+const controller = require('./controller');
 
 //aqui le decimos al router SOLAMENTE LAS PETICIONES GET 
 router.get('/', (req, res) => {
@@ -17,13 +19,15 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    //res.status(201).send({error: '', body: 'Creado correctamente'});
-    //res.send('Mensaje añadido');
-    if (req.query.error == "ok") {
-        response.error(req, res, 'Error insesperado', 500, 'es una simulacion de los errores');
-    } else {
-        response.success(req, res, 'Creado correctamente', 201);
-    }
+    //se manda usuario y el mensaje. dos propiedades candidatas a que vengan en el body de la peticion
+    controller.addMessage(req.body.user, req.body.message)
+        .then((fullMessage) => {
+            response.success(req, res, fullMessage, 201);
+        })
+        .catch(e => {
+            response.error(req, res, 'Informacion Invalida ', 400, 'Error en el contenido');
+        })
+
 });
 
 router.delete('/', (req, res) => {
