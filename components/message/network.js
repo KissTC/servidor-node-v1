@@ -9,13 +9,13 @@ const controller = require('./controller');
 
 //aqui le decimos al router SOLAMENTE LAS PETICIONES GET 
 router.get('/', (req, res) => {
-    //como leer las cabeceras. Las cabeceras van en REQUEST
-    console.log(req.headers);
-    res.header({
-        "custom-header": "nuestro valor personalizado"
-    })
-    //res.send('Lista de mensajes');
-    response.success(req, res, 'lista de mensajes');
+    controller.getMessages()
+        .then((messageList) => {
+            response.success(req, res, messageList, 200)
+        })
+        .catch(e => {
+            response.error(req, res, 'Unexpected Error', 500, e);
+        })
 });
 
 router.post('/', (req, res) => {

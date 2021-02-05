@@ -84,3 +84,8 @@ Tenemos los logs
 
 **Rutas**
 separando el archivo
+
+**mock**
+falsear la base de datos o un servicio para validar que todo funciona correctamente
+nos va a servir en este caso de aprender a saber cual es la responsabilidad unica de la capa de almacenamiento
+es basicamente una simulacion de base de datos
