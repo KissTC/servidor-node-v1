@@ -89,3 +89,8 @@ separando el archivo
 falsear la base de datos o un servicio para validar que todo funciona correctamente
 nos va a servir en este caso de aprender a saber cual es la responsabilidad unica de la capa de almacenamiento
 es basicamente una simulacion de base de datos
+
+**mongoose**
+Permitirá crear esquemas desde el código para nuestra base de datos y poder definir y cambiar estos esquemas de forma fácil
+Dentro de nuestros componentes, por ejemplo message... creamos un archivo nuevo llamado model.js este archivo contendrá el modelo
+
