@@ -9,7 +9,8 @@ const controller = require('./controller');
 
 //aqui le decimos al router SOLAMENTE LAS PETICIONES GET 
 router.get('/', (req, res) => {
-    controller.getMessages()
+    const filterMessages = req.query.user || null;
+    controller.getMessages(filterMessages) 
         .then((messageList) => {
             response.success(req, res, messageList, 200)
         })
@@ -30,10 +31,28 @@ router.post('/', (req, res) => {
 
 });
 
-router.delete('/', (req, res) => {
-    console.log(req.query);
-    console.log(req.body);
-    res.send('Mensaje añadido');
+router.patch('/:id', (req, res) => {
+    console.log(req.params.id);
+
+    controller.updateMessage(req.params.id, req.body.message)
+        .then((data) => {
+            response.success(req, res, data, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Error interno', 500, e)
+        })
+
+    res.send('Ok');
+});
+
+router.delete('/:id', (req, res) => {
+    controller.deleteMessage(req.params.id)
+        .then(() => {
+            response.success(req, res, `Usuario ${req.params.id} eliminado`, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Error interno', 500, e);
+        });
 });
 
 module.exports = router;

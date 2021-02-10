@@ -3,8 +3,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const db = require('./db');
 //const router = require('./components/message/network');
 const router = require('./network/routes');
+
+db('mongodb+srv://db_user_chat:PSTQ6Inm01dwjFwl@cluster0.zfxlp.mongodb.net/backendchat_db');
 
 //para inicializar express
 var app = express();
