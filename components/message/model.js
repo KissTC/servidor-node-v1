@@ -5,7 +5,10 @@ const Schema = mongoose.Schema;
 //este es un schema de mongoose y lo que hace es que 
 //a traves de un objeto podremos definir todas las propiedades y tipos que queramos en este caso usuario, mensaje y fecha
 const mySchema = new Schema({
-    user: String,
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
     message: {
         type: String,
         required: true,
